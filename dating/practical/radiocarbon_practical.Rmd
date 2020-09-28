@@ -35,3 +35,11 @@ shinyAppDir(appDir = "14C_decay",  options = list(width = "100%", height = 700))
 
 ## Contamination
 
+What is the apparent age of an early Quaternary fossil with 1% modern contamination (where modern is 1950)?
+
+What is the apparent age of a modern lake sediment with 1% inwashed Carboniferous coal.
+
+```{r contamination-app}
+shinyAppDir(appDir = "14C-contamination",  options = list(width = "100%", height = 700))
+```
+
