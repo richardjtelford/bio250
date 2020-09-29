@@ -12,6 +12,6 @@ render_lecture <- function(){
   available <- list.dirs(path = file.path(find.package("Bio250"), "lectures"), recursive = FALSE)
   choice <- menu(basename(available))
   rmd <- list.files(path = available[choice], pattern = "*.Rmd$", full.names = TRUE)
-#  rmarkdown::render(rmd, output_dir = getwd(), output_file = paste0(basename(available)[choice], ".html"))
-  fs::file_show(rmd)
+#  rmarkdown::render(rmd)
+  usethis::edit_file(rmd)
 }

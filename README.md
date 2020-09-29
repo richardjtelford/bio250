@@ -35,8 +35,13 @@ To close a tutorial, click the stop button.
 To render a lecture, run
 
 ```
-#render_lecture() # not yet working
+render_lecture() 
 ```
+
+and select the lecture you want. 
+This will open the lecture in Rstudio.
+Then click the blue Knit button.
+Then 
 
 
 1. Dating

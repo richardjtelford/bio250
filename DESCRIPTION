@@ -20,3 +20,5 @@ Suggests:
     tidyverse,
     xaringan,
     rbacon
+Imports: 
+    usethis
