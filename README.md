@@ -4,31 +4,39 @@ Lectures and Practicals for Bio250 Palaeoecology University of Bergen
 
 ## Set-up
 
-Open the project by opening the `Bio250.Rproj` file.
+Open Rstudio.
 
-To run the practicals, you need several packages installed, including
-
-```
-tidyverse
-patchwork
-shiny
-knitr
-Bchron
-rioja
-```
-
-You may have some of these installed already. 
-Install any missing packages
+You can install the tutorials with the following commands
 
 ```
-install.packages("Bchron")
+install.packages("remotes")
+remotes::install_github("richardjtelford/Bio250", upgrade = "never")
 ```
 
-If you want to render the lecture notes, several more packages are required. 
-Rstudio will give you feedback as to what is missing.
+This may take a few minutes as several dependences need to be installed.
+
+Then load the tutorials by running 
+```
+library(Bio250)
+```
+
+In the top right panel, there should be a tutorial tab. Open this and you should see the available tutorials and lecture notes.
 
 ## Practicals
 
+1. Radiocarbon Dating
+2. Radiocarbon calibration
+
+To close a tutorial, click the stop button.
+
+
+## Lecture notes
+
+To render a lecture, run
+
+```
+#render_lecture() # not yet working
+```
+
+
 1. Dating
-2. Age-depth modelling and chronologies
-3. Quantitative palaeoenvironmental reconstructions with transfer functions
