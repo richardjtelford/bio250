@@ -19,14 +19,14 @@ The plot on the left shows a collection of ^14^C atoms that decay over time, the
 
 ### Questions
 
-How long does it take for the ^14^C activity to fall to half the initial value?
+- How long does it take for the ^14^C activity to fall to half the initial value?
 
-How long does it take for the ^14^C activity to fall from half to one quarter of the initial value?
+- How long does it take for the ^14^C activity to fall from half to one quarter of the initial value?
 
-Why is the maximum age that ^14^C useful for about 55 000 years? 
-How many half-lives is this?
+- Why is the maximum age that ^14^C useful for about 55 000 years? 
+- How many half-lives is 55 000 years?
 
-A fossil leaf as an ^14^C activity that is 38% of modern. 
+- A fossil leaf as an ^14^C activity that is 38% of modern. 
 Approximately how old is it?
 
 ```{r c14-decay-app}
@@ -35,9 +35,9 @@ shinyAppDir(appDir = "14C_decay",  options = list(width = "100%", height = 700))
 
 ## Contamination
 
-What is the apparent age of an early Quaternary fossil with 1% modern contamination (where modern is 1950)?
+- What is the apparent age of an early Quaternary fossil with 1% modern contamination (where modern is 1950 i.e. 0 yr BP)?
 
-What is the apparent age of a modern lake sediment with 1% inwashed Carboniferous coal.
+- What is the apparent age of a modern lake sediment with 1% in-washed Carboniferous coal.
 
 ```{r contamination-app}
 shinyAppDir(appDir = "14C-contamination",  options = list(width = "100%", height = 700))

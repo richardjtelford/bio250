@@ -18,8 +18,8 @@ ui <- fluidPage(
     # Sidebar with a slider input for number of bins 
     sidebarLayout(
         mainPanel(
-            numericInput("trueAge", "True Age", 0),
-            numericInput("contamAge", "Age of contamination", 0),
+            numericInput("trueAge", "True Age, yr BP", 0),
+            numericInput("contamAge", "Age of contamination, yr BP", 0),
             numericInput("contamPerc", "Percent contamination", 0)
             ),
 
@@ -29,7 +29,7 @@ ui <- fluidPage(
             textOutput("trueActivity"),
             h4("Measured Activity"),
             textOutput("measuredActivity"),
-            h4("Apparent Age"),
+            h4("Apparent Age yr BP"),
             textOutput("apparentAge"), 
         )
     )
@@ -58,7 +58,7 @@ server <- function(input, output) {
        
       apparentAge <-  -log(process()$measuredAct) * halflife/log(2)
       apparentAge <- round(apparentAge)
-      paste(apparentAge, "yr BP")
+      paste(apparentAge, ", yr BP")
     })
 }
 
