@@ -118,7 +118,9 @@ Common in enclosed marginal seas
 -	Baltic Sea
 -	Black Sea
 -	Cariaco Basin
-Also under up-welling zones
+- Also under up-welling zones
+
+Why not in most of the ocean?
 ]
 .pull-right[
 <img src = "figures/Cariaco-Basin-grayscale-for-the-last-deglaciation-plotted-versus-old-and-newly-revised_W640.jpg">
@@ -215,10 +217,13 @@ https://enciklopedija.hr/natuknica.aspx?ID=36340
 --
 Cosmic radiation hits upper atmosphere
 --
+
 Nuclei broken into high-energy nucleotides
 --
+
 <sup>14</sup>C formed by exchange of p for n in Nitrogen atom
 --
+
 <sup>14</sup>C absorbed by biomass and moves through the food chain
 
 Everything is radioactive
@@ -468,6 +473,19 @@ zoom1 + zoom2 +
   )
 ```
 
+---
+## Why does atmospheric <sup>14</sup>C vary?
+
+1 Variable production
+- <sup>14</sup>C is produced by cosmic radiation
+- Cosmic radiation is high energy charged particles 
+ -Magnetic fields deflect charged particles, shielding objects behind them
+- Variation in the sun’s or the earth’s magnetic field changes the amount of shielding, and the production rate of <sup>14</sup>C
+
+2 Carbon cycle changes
+- Change distribution of <sup>14</sup>C in the biosphere
+  - rate of ocean turnover
+  - global vegetation changes
 
 ---
 class: inverse
@@ -530,10 +548,11 @@ Period of massive human impact on the environment
 - eutrophication
 - climate change
 
-Nuclear bomb-derived <sup>14</sup>C
-<sup>210</sup>Pb 
-- half-life 22 years
-- part of decay chain from <sup>238</sup>U 
+Methods
+- Nuclear bomb-derived <sup>14</sup>C
+- <sup>210</sup>Pb 
+  - half-life 22 years
+  - part of decay chain from <sup>238</sup>U 
 ]
 ---
 ## Postbomb-calibration curve – Northern Hemisphere
