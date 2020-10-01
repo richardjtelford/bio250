@@ -45,6 +45,7 @@ rsconnect/
 *.ppt
 Bacon_runs/
 *# 
+!LICENSE.md
 
 # Mac
 *.DS_Store
