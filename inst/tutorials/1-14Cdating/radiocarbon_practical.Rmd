@@ -3,6 +3,7 @@ title: "Radiocarbon Dating"
 author: "Richard J. Telford"
 date: "9/28/2020"
 output: html_document
+description: Simulation of radiocarbon decay & effect of contamination on dates
 runtime: shiny
 ---
 

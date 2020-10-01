@@ -1,6 +1,9 @@
 ---
 title: "Radiocarbon calibration"
 output: learnr::tutorial
+author: "Richard J. Telford"
+date: "2020/10/1"
+description: Calibration of single dates.
 runtime: shiny_prerendered
 ---
 
