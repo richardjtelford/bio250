@@ -28,20 +28,3 @@ In the top right panel, there should be a tutorial tab. Open this and you should
 2. Radiocarbon calibration
 
 To close a tutorial, click the stop button.
-
-
-## Lecture notes
-
-To render a lecture, run
-
-```
-render_lecture() 
-```
-
-and select the lecture you want. 
-This will open the lecture in Rstudio.
-Then click the blue Knit button.
-Then 
-
-
-1. Dating
