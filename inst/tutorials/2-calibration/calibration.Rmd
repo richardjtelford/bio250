@@ -66,6 +66,6 @@ summary(cal)
 plot(cal)
 ```
 
-1 Why are the calibrated dates' probability density functions so irregular?
-2 Why do the two dates give such different shaped calibrated dates?
+1 Why are the calibrated dates' probability density functions so irregular?  
+2 Why do the two dates give such different shaped calibrated dates?  
 3 Calibrate the dates as if they are on marine fossils and compare the results.
