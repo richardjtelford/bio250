@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 
-## Software
+## Software for calibrating radiocarbon dates
 
 ### Web:
 
@@ -21,23 +21,36 @@ knitr::opts_chunk$set(echo = FALSE)
 
 - [OxCal](https://c14.arch.ox.ac.uk/oxcal.html)
 
+
 ### R packages
 
 - rbacon
 - Bchron
 - oxcAAR (interface to OxCal)
 
-Bchron is easiest to use.
+Bchron is easiest to use. 
+OxCal is very popular with archaeologists as it has models they can use.
+
+## Calibration dates
 
 
 ### Exercise 
 
-Use Bchron to calibrate and plot the dates 2450 +/- 30 BP and 2600 +/- 30 BP.
+Calibrate and plot the dates 2450 +/- 30 BP and 2600 +/- 30 BP measured on terrestrial leaves.
 
+First, load the `Bchron` package.
+Function `BchronCalibrate` will calibrate individual dates. 
+The most important arguments are `ages`, `ageSds`, and `calCurves`, which take the radiocarbon age, error, and the name of the calibration curve to use.
+Either a single value or a vector can be used for each argument, but all three must be the same length.
+The standard calibration curves are 'intcal20', 'shcal20' and 'marine20'.
 
-```{r calib, exercise=TRUE, exercise.lines = 5}
+```{r calib, exercise=TRUE, exercise.lines = 10}
 library(Bchron)
-cal <- BchronCalibrate(    )
+cal <- BchronCalibrate(
+  ages = , 
+  ageSds = , 
+  calCurves =     
+)
 summary(cal)
 plot(cal)
 
@@ -45,9 +58,14 @@ plot(cal)
 
 
 ```{r calib-hint}
-cal <- BchronCalibrate(ages = c(2450, 2600), ageSds = c(30, 30), calCurves = rep("intcal20", 2))
+cal <- BchronCalibrate(
+  ages = c(2450, 2600), 
+  ageSds = c(30, 30), 
+  calCurves = rep("intcal20", 2))
 summary(cal)
 plot(cal)
 ```
 
-Explain why the two dates give such different shaped calibrated dates.
+1 Why are the calibrated dates' probability density functions so irregular?
+2 Why do the two dates give such different shaped calibrated dates?
+3 Calibrate the dates as if they are on marine fossils and compare the results.
