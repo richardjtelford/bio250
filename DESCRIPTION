@@ -20,4 +20,7 @@ Suggests:
     xaringan,
     rbacon
 Imports: 
-    usethis
+    usethis,
+    ggpalaeo (>= 0.0.0.9005)
+Remotes:  
+    richardjtelford/ggpalaeo

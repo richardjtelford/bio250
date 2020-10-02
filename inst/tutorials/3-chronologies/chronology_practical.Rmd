@@ -64,3 +64,8 @@ ggplot(proxy, aes(x = age, y = d18O)) +
   geom_point()
 ```
 
+14) Adding a chronology to a stratigraphic diagram.
+
+- Alternative 1. Replace depth with age in `rioja::stat.plot`
+- Alternative 2. Add a secondary age scale with `ggpalaeo::secondary_scale()`. `ggpalaeo` is on github, but package Bio250 should have installed it. See help file for details.
+
