@@ -1,0 +1,66 @@
+---
+title: "Chronologies Practical: Radiocarbon dating & proxy correlation"
+author: "Richard J. Telford"
+date: '`r format(Sys.Date(), "%d %B %Y")`'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+
+```
+
+# Part One: Running Bacon test examples.
+
+1) Make a new project (File > New Project). This helps keep track of files and working directories.
+2) Load the `rbacon` package with `library(rbacon)`. Also load the `tidyverse` package for `ggplot` etc.
+3) Run the command `Bacon()` to make an age-depth model for the ^14^C dates on the default core MSB2K. Answer "y" to the questions.
+5) This will take a a few minutes (depending on how fast your computer is). When it is finished, run `agedepth()` to create a plot. 
+
+The first plot indicates how well the Monte Carlo procedure has converged – you want this to resemble a hairy caterpillar (white noise). 
+
+The second and third plots show the prior (green) and posterior (grey) for the sedimentation rate and memory respectively.
+
+The main panel shows the calibrated ^14^C dates (blue) and the age depth model, where darker greys indicate more likely ages. A red line picks out the most likely age for each depth. 
+
+6) Run `proxy.ghost()` to see the proxies with chronological uncertainty.
+
+
+# Part two: 
+
+El Bilali et al (2013) report $\delta^{18}O$ of Sphagnum cellulose for most of the Holocene and find a correlation with solar activity. We want to test this.
+
+Start by fitting an age-depth model for the cellulose data
+
+7) `Bacon` is very particular and idiosyncratic about how it expects to find data. Read the manual for more details. Put the file "cellulose.dates.csv"" into the directory "chronology_practical/cellulose.dates" inside the directory where your project file is.
+8) Now run 
+```{r, eval = FALSE}
+Bacon("cellulose.dates", thick = 10, coredir = "chronology_practical/")
+```
+Answer "y" at the prompt. The argument thick sets the thickness of the sections that bacon uses. 5 is the default, but takes too long with this core.
+9) This is a good time for a cup of coffee. R will estimate how long you have to drink it!
+10) Examine the age-depth plot and check for convergence.
+11) Bacon will put some output files into the data directory. These include the mean ages in the file "cellulose.dates_57_ages.txt". Load this file with the command 
+
+```{r}
+ageDepth <- read_delim("chronology_practical/cellulose.dates/cellulose.dates_57_ages.txt", delim = "\t")
+```
+
+11) Now we need to import the proxy data and put it onto the age scale. Import the proxy data with 
+```{r}
+proxy <- read_delim("chronology_practical/cellulose.dates/cellulose.csv", delim = ",")
+```
+Run `summary(proxy)` to get some more information about the data.
+12) We can find the date for each depth at which we have proxy data with 
+```{r}
+proxy$age <- approx(x = ageDepth$depth, y = ageDepth$wmean, xout = proxy$Depth)$y 
+```
+
+There are alternatives ways to code this.
+
+13) Now we can plot the proxy against age 
+```{r}
+ggplot(proxy, aes(x = age, y = d18O)) +
+  geom_point()
+```
+
