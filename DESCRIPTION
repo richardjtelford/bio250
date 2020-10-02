@@ -17,10 +17,10 @@ Suggests:
     learnr,
     Bchron,
     tidyverse,
-    xaringan,
-    rbacon
+    rbacon,
+    ggpalaeo (>= 0.0.0.9005), 
+    rioja
 Imports: 
-    usethis,
-    ggpalaeo (>= 0.0.0.9005)
-Remotes:  
+    rstudioapi
+Remotes: 
     richardjtelford/ggpalaeo
