@@ -18,9 +18,11 @@ Suggests:
     Bchron,
     tidyverse,
     rbacon,
-    ggpalaeo (>= 0.0.0.9005), 
     rioja
 Imports: 
-    rstudioapi
-Remotes: 
-    richardjtelford/ggpalaeo
+    rstudioapi,
+    ggpalaeo (>= 0.0.0.9005),
+    ggvegan (>= 0.1.0)
+Remotes:  
+    richardjtelford/ggpalaeo,
+    gavinsimpson/ggvegan

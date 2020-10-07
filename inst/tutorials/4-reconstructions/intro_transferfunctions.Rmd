@@ -18,7 +18,6 @@ Transfer functions for palaeoenvironmental reconstructions can be fitted with th
 library("rioja")
 library("palaeoSig")
 library("tidyverse")
-library("ggvegan")
 library("ggpalaeo")
 ```
 
