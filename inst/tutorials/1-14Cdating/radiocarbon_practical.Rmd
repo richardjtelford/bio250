@@ -1,7 +1,7 @@
 ---
 title: "Radiocarbon Dating"
 author: "Richard J. Telford"
-date: "9/28/2020"
+date: "2021/10/03"
 output: html_document
 description: Simulation of radiocarbon decay & effect of contamination on dates
 runtime: shiny
@@ -30,7 +30,7 @@ The plot on the left shows a collection of ^14^C atoms that decay over time, the
 - A fossil leaf as an ^14^C activity that is 38% of modern. 
 Approximately how old is it?
 
-```{r c14-decay-app}
+```{r c14-decay-app, message = FALSE}
 shinyAppDir(appDir = "14C_decay",  options = list(width = "100%", height = 700))
 ```
 
@@ -40,7 +40,7 @@ shinyAppDir(appDir = "14C_decay",  options = list(width = "100%", height = 700))
 
 - What is the apparent age of a modern lake sediment with 1% in-washed Carboniferous coal.
 
-```{r contamination-app}
+```{r contamination-app, message=FALSE}
 shinyAppDir(appDir = "14C-contamination",  options = list(width = "100%", height = 700))
 ```
 
