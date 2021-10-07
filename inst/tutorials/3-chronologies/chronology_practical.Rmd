@@ -57,7 +57,7 @@ Load the `Bchron` package with `library()`
 
 Fit the Bchron model with the function `Bchronology()`
 
-Important arguments you need to set are `ages`, `ageSds`, and `positions` (i.e depth). See the example in the helpfile for how to do this. The `calCurves` argument will default to "intcal20", which is what we want, so it does not need changing. 
+Important arguments you need to set are `ages`, `ageSds`, and `positions` (i.e depth). See the examples in the help file for how to do this with `?Bchronology()`. The `calCurves` argument will default to "intcal20", which is what we want, so it does not need changing. 
 
 After fitting the Bchron model, and assigning it to an object, you can plot it with `plot()` or make predictions for the depths you have proxy data at with `predict()`
 
