@@ -25,47 +25,47 @@ The main panel shows the calibrated ^14^C dates (blue) and the age depth model, 
 
 6) Run `proxy.ghost()` to see the proxies with chronological uncertainty.
 
+#Part two: CLAM
 
-# Part two: 
+Fitting an age-depth model for the Trettetjørn data.
 
-El Bilali et al (2013) report $\delta^{18}O$ of Sphagnum cellulose for most of the Holocene and find a correlation with solar activity. We want to test this.
+1) Download the dates_trettetjorn.csv from mitt uib.
+Make sure the file format exactly matches the file Example.csv in the clam_runs directory that Bacon made in the previous section. 
 
-Start by fitting an age-depth model for the cellulose data
+2)  Bacon and clam are very particular and idiosyncratic about how they expects to find data. Read the manuals for more details. Put the file dates_trettetjorn.csv into the directory “chronology_practical/dates_trettetjorn” inside the directory where your project file is.
 
-7) `Bacon` is very particular and idiosyncratic about how it expects to find data. Read the manual for more details. Put the file "cellulose.dates.csv"" into the directory "chronology_practical/cellulose.dates" inside the directory where your project file is.
-8) Now run 
-```{r, eval = FALSE}
-Bacon("cellulose.dates", thick = 10, coredir = "chronology_practical/")
-```
-Answer "y" at the prompt. The argument thick sets the thickness of the sections that bacon uses. 5 is the default, but takes too long with this core.
-9) This is a good time for a cup of coffee. R will estimate how long you have to drink it!
-10) Examine the age-depth plot and check for convergence.
-11) Bacon will put some output files into the data directory. These include the mean ages in the file "cellulose.dates_57_ages.txt". Load this file with the command 
+3)  Import the dates into R with `read_csv()`.
+
+4)    Calibrate dates individually with clam::calibrate. To calibrate the first date, you will need code like
+
+
 
 ```{r}
-ageDepth <- read_delim("chronology_practical/cellulose.dates/cellulose.dates_57_ages.txt", delim = "\t")
+clam::calibrate(cage = trettetjorn$age[1], error = trettetjorn$error[1])
 ```
 
-11) Now we need to import the proxy data and put it onto the age scale. Import the proxy data with 
+5)    Fit a model with clam
+
 ```{r}
-proxy <- read_delim("chronology_practical/cellulose.dates/cellulose.csv", delim = ",")
+clam("Lygra", coredir = "chronology_practical/")
 ```
-Run `summary(proxy)` to get some more information about the data.
-12) We can find the date for each depth at which we have proxy data with 
+
+
+
+Try different types of model
+
+#Part 3 Bacon
+
+Format as the file MSB2K.csv in the Bacon_runs directory that Bacon made in the first section. Save the file as trettetjorn_Bacon.csv in a directory called trettetjorn_Bacon.
+
+Fit a model with Bacon. Answer “y” at the prompt.
+
 ```{r}
-proxy$age <- approx(x = ageDepth$depth, y = ageDepth$wmean, xout = proxy$Depth)$y 
+Bacon("trettetjorn_Bacon", coredir = "chronology_practical/")
+
 ```
 
-There are alternatives ways to code this.
 
-13) Now we can plot the proxy against age 
-```{r}
-ggplot(proxy, aes(x = age, y = d18O)) +
-  geom_point()
-```
-
-14) Adding a chronology to a stratigraphic diagram.
-
-- Alternative 1. Replace depth with age in `rioja::stat.plot`
-- Alternative 2. Add a secondary age scale with `ggpalaeo::secondary_scale()`. `ggpalaeo` is on github, but package Bio250 should have installed it. See help file for details.
+Examine the age-depth plot and check for convergence.
+Bacon will put some output files into the data directory.
 
