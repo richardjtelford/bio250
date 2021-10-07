@@ -1,5 +1,5 @@
 ---
-title: "Chronologies Practical: Radiocarbon dating & proxy correlation"
+title: "Chronologies Practical"
 author: "Richard J. Telford"
 date: '`r format(Sys.Date(), "%d %B %Y")`'
 output: html_document
@@ -10,12 +10,65 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 
 ```
 
-# Part One: Running Bacon test examples.
+# Setup
 
-1) Make a new project (File > New Project). This helps keep track of files and working directories.
-2) Load the `rbacon` package with `library(rbacon)`. Also load the `tidyverse` package for `ggplot` etc.
-3) Run the command `Bacon()` to make an age-depth model for the ^14^C dates on the default core MSB2K. Answer "y" to the questions.
-5) This will take a a few minutes (depending on how fast your computer is). When it is finished, run `agedepth()` to create a plot. 
+Make a new project (File > New Project). This helps keep track of files and working directories.
+
+Load the tidyverse package with `library()`
+
+# Calibrating individual dates
+
+Fitting an age-depth model for the Trettetjørn data.
+
+1) Download the dates_trettetjorn.csv from mitt uib.
+
+2) Put the file dates_trettetjorn.csv into the directory “chronology_practical/dates_trettetjorn” inside the directory where your project file is. This is because Bacon and clam are very inflexible about where the data should be.
+
+3)  , then import the dates into R with `read_csv2()` and assign to the object `trettetjorn` with the arrow `<-`
+
+4)    Calibrate dates individually with `IntCal::calibrate()`. To calibrate the first date, you will need code like
+
+
+```{r}
+library(IntCal)
+calibrate(age = trettetjorn$"14C_age"[1], error = trettetjorn$error[1])
+```
+
+# Fitting a model with clam
+
+**skip this section** - the data need reformatting a lot for it to work (unfortunately Bacon and clam need the data formatting differently).
+
+If you still want to do it, edit the data according to instructions in the help file `?clam::clam`.
+
+5) Fit a model with clam
+
+```{r}
+#skip this section
+clam("dates_trettetjorn", coredir = "chronology_practical/")
+```
+Try different types of model
+
+# Bchron
+
+Bchron models are easier to fit than Bacon models because you can give it the data you have imported, whereas Bacon needs to find the data in a particular directory.
+
+
+Load the `Bchron` package with `library()`
+
+Fit the Bchron model with the function `Bchronology()`
+
+Important arguments you need to set are `ages`, `ageSds`, and `positions` (i.e depth). See the example in the helpfile for how to do this. The `calCurves` argument will default to "intcal20", which is what we want, so it does not need changing. 
+
+After fitting the Bchron model, and assigning it to an object, you can plot it with `plot()` or make predictions for the depths you have proxy data at with `predict()`
+
+
+# Running Bacon test examples.
+
+An alternative package for generating age-depth models is `rbacon`. 
+
+1) Load the `rbacon` package with `library(rbacon)`.
+2) Run the command `Bacon()` to make an age-depth model for the ^14^C dates on the default core MSB2K. Answer "y" to the questions.
+3) This will take a a few minutes (depending on how fast your computer is). When it is finished, run `agedepth()` to create a plot. 
 
 The first plot indicates how well the Monte Carlo procedure has converged – you want this to resemble a hairy caterpillar (white noise). 
 
@@ -23,49 +76,27 @@ The second and third plots show the prior (green) and posterior (grey) for the s
 
 The main panel shows the calibrated ^14^C dates (blue) and the age depth model, where darker greys indicate more likely ages. A red line picks out the most likely age for each depth. 
 
-6) Run `proxy.ghost()` to see the proxies with chronological uncertainty.
-
-#Part two: CLAM
-
-Fitting an age-depth model for the Trettetjørn data.
-
-1) Download the dates_trettetjorn.csv from mitt uib.
-Make sure the file format exactly matches the file Example.csv in the clam_runs directory that Bacon made in the previous section. 
-
-2)  Bacon and clam are very particular and idiosyncratic about how they expects to find data. Read the manuals for more details. Put the file dates_trettetjorn.csv into the directory “chronology_practical/dates_trettetjorn” inside the directory where your project file is.
-
-3)  Import the dates into R with `read_csv()`.
-
-4)    Calibrate dates individually with clam::calibrate. To calibrate the first date, you will need code like
+4) Run `proxy.ghost()` to see the proxies with chronological uncertainty.
 
 
+# Using Bacon
 
-```{r}
-clam::calibrate(cage = trettetjorn$age[1], error = trettetjorn$error[1])
-```
+`dates_trettetjorn.csv` is formatted correctly for `rbacon`
 
-5)    Fit a model with clam
-
-```{r}
-clam("Lygra", coredir = "chronology_practical/")
-```
-
-
-
-Try different types of model
-
-#Part 3 Bacon
-
-Format as the file MSB2K.csv in the Bacon_runs directory that Bacon made in the first section. Save the file as trettetjorn_Bacon.csv in a directory called trettetjorn_Bacon.
+The file must be saved in the expected directory or Bacon will not find it (see above for instructions).
 
 Fit a model with Bacon. Answer “y” at the prompt.
 
+You need to tell Bacon the name of the file (without the .csv), which must also be the name of the directory containing the file.
+
+The `sep` argument is needed because the columns are separated by semicolons rather than the expected commas.
+
 ```{r}
-Bacon("trettetjorn_Bacon", coredir = "chronology_practical/")
+Bacon("dates_trettetjorn", coredir = "chronology_practical/", sep = ";")
 
 ```
 
 
 Examine the age-depth plot and check for convergence.
-Bacon will put some output files into the data directory.
 
+Bacon will put some output files into the data directory.
