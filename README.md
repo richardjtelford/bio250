@@ -26,5 +26,6 @@ In the top right panel, there should be a tutorial tab. Open this and you should
 
 1. Radiocarbon Dating
 2. Radiocarbon calibration
+3. Chronology building
 
 To close a tutorial, click the stop button.
